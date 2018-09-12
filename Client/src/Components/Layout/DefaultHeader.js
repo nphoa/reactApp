@@ -6,6 +6,9 @@ import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler }
 import logo from '../../assets/img/brand/logo.svg'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 
+import {connect} from 'react-redux';
+import * as actions from './../../Actions/index';
+
 const propTypes = {
   children: PropTypes.node,
 };
@@ -13,6 +16,13 @@ const propTypes = {
 const defaultProps = {};
 
 class DefaultHeader extends Component {
+
+  constructor(props){
+    super(props);
+  }
+  run(){
+    alert(1);
+  }
   render() {
 
     // eslint-disable-next-line
@@ -65,7 +75,9 @@ class DefaultHeader extends Component {
               <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>
               <DropdownItem divider />
               <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
-              <DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+              <DropdownItem onClick ={this.props.logout}>
+                <i className="fa fa-lock" ></i> Logout
+              </DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>
@@ -79,4 +91,18 @@ class DefaultHeader extends Component {
 DefaultHeader.propTypes = propTypes;
 DefaultHeader.defaultProps = defaultProps;
 
-export default DefaultHeader;
+
+const mapStateToProps = (state) => {
+  return{
+  
+    
+  }
+}
+const mapDispatchToProps = (dispatch,props) => {
+    return {
+      logout:() => {
+        dispatch(actions.logout())
+      }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(DefaultHeader);

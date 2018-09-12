@@ -13,3 +13,9 @@ export const login_success = (login) =>{
         login:login
     }
 }
+
+export const logout = () => {
+    return{
+        type:actionTypes.LOGOUT
+    }
+}

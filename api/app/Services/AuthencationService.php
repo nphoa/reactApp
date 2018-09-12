@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -30,6 +31,7 @@ class AuthencationService {
     public function login($user){
         $result = [];
         $result['token'] = null;
+        $result['user'] = null;
         try {
             if (! $token = JWTAuth::attempt($user)) {
                 $result['message'] = 'invalid user';
@@ -37,6 +39,7 @@ class AuthencationService {
             }else{
                 $result['message'] = 'success';
                 $result['status_code'] = 200;
+                $result['user'] = Auth::user();;
                 $result['token'] = $token;
             }
         } catch (JWTException $e) {

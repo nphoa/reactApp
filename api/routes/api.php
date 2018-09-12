@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('authencation/register','AuthencationController@register');
 Route::post('authencation/login','AuthencationController@login');
+
+Route::get('keyword/getAll','KeywordController@getAll')->middleware('jwt.auth');

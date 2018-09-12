@@ -35,7 +35,7 @@ class AuthencationController extends Controller
         }
         //$credentials = $req->only('email', 'password');
         $result = $this->authencationService->login($req->all());
-        return response()->json(['message' => $result['message'],'token'=>$result['token']],$result['status_code']);
+        return response()->json(['message' => $result['message'],'token'=>$result['token'],'user'=>$result['user']],$result['status_code']);
 
 
     }

@@ -1,7 +1,7 @@
 import * as types from '../Contants/actionType';
 
 var initialState  = {
-	isLogin:true,
+	isLogin:false,
 	login:{
 		email:'',
 		password:''
@@ -11,11 +11,18 @@ var initialState  = {
 var myReducer = (state = initialState,action) => {
 	switch (action.type) {
 		case types.LOGIN_SUCCESS:
-			console.log(action);
-			state.login = action.login;
 			state.isLogin = true;
+			sessionStorage.setItem('token',action.login.token);
+			sessionStorage.setItem('userInfo',JSON.stringify(action.login.user));
 			return {...state};
 			break;
+		case types.LOGOUT:
+			state.isLogin = false;
+			sessionStorage.clear();
+			state.login = {};
+			return {...state};
+			break;
+			
 		default:
 			//console.log(api.getAllProduct());
 			return {...state};
