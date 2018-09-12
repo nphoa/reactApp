@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKeywordTypesTable extends Migration
+class CreateMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateKeywordTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('keyword_types', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type',50);
-            $table->string('vietnamese',500);
+            $table->string('name');
+            $table->string('icons');
+            $table->integer('idUser');
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
@@ -30,6 +31,6 @@ class CreateKeywordTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keyword_types');
+        Schema::dropIfExists('menus');
     }
 }

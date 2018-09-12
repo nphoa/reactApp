@@ -3,13 +3,19 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import LoginComponent from './Components/Login.Component';
 import LayoutComponent from './Components/Layout/layout.Component';
 import DashboardComponent from './Components/Dashboard.Component';
-import KeywordContainer from './Containers/Keyword.Container';
+import KeywordsContainer from './Containers/Keywords.Container';
 import Keyword from './Components/English/Keyword.Component';
+import RegisterComponent from './Components/Register.Component';
 const routers = [
     {
         path:'/login',
         exact:true,
         component:LoginComponent
+    },
+    {
+        path:'/register',
+        exact:true,
+        component:RegisterComponent
     },
     {
         path:'/',
@@ -23,7 +29,7 @@ const routers = [
             {
                 path:'/keywords',
                 exact:true,
-                component:KeywordContainer
+                component:KeywordsContainer
             },
             {
                 path:'/addKeyword',

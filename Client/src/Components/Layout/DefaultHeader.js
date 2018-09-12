@@ -27,7 +27,7 @@ class DefaultHeader extends Component {
 
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
-
+    let userNameLogin = (sessionStorage.getItem('userInfo')) ? JSON.parse(sessionStorage.getItem('userInfo')).name : '';
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
@@ -60,7 +60,8 @@ class DefaultHeader extends Component {
           </NavItem>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              <img src={'assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
+              {userNameLogin}
+              <img src='http://localhost:3000/if_users-9_984126.png' className="img-avatar" alt="admin@bootstrapmaster.com" />
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
               <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>

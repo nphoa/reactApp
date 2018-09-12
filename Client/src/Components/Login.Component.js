@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
 import * as actions from '../Actions/index';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 class LoginComponent extends Component{
@@ -96,7 +96,8 @@ class LoginComponent extends Component{
                         <h2>Sign up</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                           labore et dolore magna aliqua.</p>
-                        <Button color="primary" className="mt-3" active>Register Now!</Button>
+                        
+                        <Link to='/register'  className="btn btn-warning">Register Now!</Link>
                       </div>
                     </CardBody>
                   </Card>

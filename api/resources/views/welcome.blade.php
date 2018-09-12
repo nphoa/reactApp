@@ -79,8 +79,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
+                    Laravel 2222227
+                </div>asdadasd
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>

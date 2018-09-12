@@ -25,6 +25,7 @@ var myReducer = (state = initialState,action) => {
 			
 		default:
 			//console.log(api.getAllProduct());
+			state.isLogin = (sessionStorage.getItem('userInfo')) ? true :false;
 			return {...state};
 			break;
 	}

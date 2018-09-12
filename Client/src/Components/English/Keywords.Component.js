@@ -1,7 +1,35 @@
 import React , {Component} from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import * as urls from './../../API/url';
 class KeywordsComponent extends Component{
+    constructor(props){
+      super(props);
+      this.state = {
+        keywords:[]
+      }
+    }
+    callApi(url,token){
+        fetch(url,{
+            method:'GET',
+            headers:{
+              'Content-Type': 'application/json',
+              'Authorization':token
+            }
+        }).then((res)=>{
+            res.json();
+        }).then(response=>{
+            console.log(response);
+        })
+        .catch((error)=>{
+          console.log(error);
+        });
+    }
+    componentDidMount(){
+      let token = 'Bearer '+sessionStorage.getItem('token');
+      this.callApi(urls.url_get_keywords,token);
+      
+    }
     showContentKeyword = (keywords) => {
         let result = null;
        if(keywords != null && keywords.length > 0){
