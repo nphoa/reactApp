@@ -17,7 +17,7 @@ class KeywordsComponent extends Component{
               'Authorization':token
             }
         }).then((res)=>{
-            res.json();
+           return res.json();
         }).then(response=>{
             console.log(response);
         })
@@ -26,8 +26,9 @@ class KeywordsComponent extends Component{
         });
     }
     componentDidMount(){
-      let token = 'Bearer '+sessionStorage.getItem('token');
-      this.callApi(urls.url_get_keywords,token);
+      //let token = 'Bearer '+sessionStorage.getItem('token');
+      //this.callApi(urls.url_get_keywords,token);
+      this.props.getKeywords();
       
     }
     showContentKeyword = (keywords) => {
@@ -35,12 +36,12 @@ class KeywordsComponent extends Component{
        if(keywords != null && keywords.length > 0){
             result = keywords.map((item,index)=>{
                 return (
-                    <tr>
+                    <tr key={index}>
                     <td>{item.keyword}</td>
-                    <td>{item.keywordType}</td>
-                    <td>{item.vietnames}</td>
+                    <td>{item.type}</td>
+                    <td>{item.vietnamese}</td>
                     <td>
-                        <a href='' className='btn btn-warning'>Edit</a>
+                        <Link to ={`/addKeyword/${item.id}`} href='' className='btn btn-warning'>Edit</Link>
                         <a href='' className='btn btn-danger'>Delete</a>
                     </td>
                   </tr>

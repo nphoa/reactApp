@@ -3,6 +3,8 @@ import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, Pag
 import {Field,reduxForm} from 'redux-form';
 
 import {connect} from 'react-redux';
+import callApi from './../../API/callApi';
+import * as urls from './../../API/url';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 
@@ -13,6 +15,15 @@ class KeywordComponent extends Component {
             otherState:'',
            
         }
+    }
+    componentWillMount(){
+        if(this.props.match.params.id !== undefined){
+            this.props.getKeywordById(this.props.match.params.id);
+        }
+    }
+    componentDidMount(){
+       
+        this.props.getKeywordTypes();
     }
     renderField = ({input,type,meta:{ touched, error, warning}}) => {
         return (
@@ -35,7 +46,26 @@ class KeywordComponent extends Component {
         )
       }
       submitForm = () => {
-            alert(123);
+          let values = this.props.valuesForm.values;
+          console.log(values);
+          let token = 'Bearer '+sessionStorage.getItem('token');
+          let fd = new FormData();
+          fd.set('keyword',JSON.stringify(values));
+          callApi(urls.url_post_saveKeyword,'POST',fd,token).then((res)=>{
+                console.log(res);
+          }).catch((error)=>{
+
+          })
+            
+      }
+      showKeywordTypes = (keywordTypes) => {
+          let result = null;
+          result = keywordTypes.map((item,index)=>{
+                return(
+                    <option key={index} value={item.id}>{`Type:${item.type}---Vietnamese:${item.vietnamese}`}</option>
+                )
+          });
+          return result;
       }
     render() {
         const { pristine, reset, submitting,valid,handleSubmit } = this.props;
@@ -55,19 +85,15 @@ class KeywordComponent extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label>Type</label>
-                                        <Field name="keywordType" component={this.renderFieldSelect} >
+                                        <Field name="idType" component={this.renderFieldSelect} >
 
-                                           <option>S</option>
-                                           <option>V</option>
-                                           <option>O</option>
-                                           <option>Adv</option>
-                                           <option>A</option>
+                                           {this.showKeywordTypes(this.props.keywordTypes)}
                                         </Field>
                                     </div>
                                     <div className="form-group">
                                         <label>Vietnames</label>
                                        
-                                        <Field name="vietnames" type="input" component='textarea' className='form-control' cols={50} rows={4} validate={required}/>
+                                        <Field name="vietnamese" type="input" component='textarea' className='form-control' cols={50} rows={4} validate={required}/>
                                     </div>
 
                                     <button type="submit" disabled={submitting}  class="btn btn-info hvr-grow-rotate" style={{}}>Submit</button>

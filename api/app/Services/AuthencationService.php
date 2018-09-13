@@ -39,7 +39,7 @@ class AuthencationService {
             }else{
                 $result['message'] = 'success';
                 $result['status_code'] = 200;
-                $result['user'] = Auth::user();;
+                $result['user'] = Auth::user();
                 $result['token'] = $token;
             }
         } catch (JWTException $e) {

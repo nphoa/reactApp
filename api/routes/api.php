@@ -20,3 +20,6 @@ Route::post('authencation/register','AuthencationController@register');
 Route::post('authencation/login','AuthencationController@login');
 
 Route::get('keyword/getAll','KeywordController@getAll')->middleware('jwt.auth');
+Route::get('keyword/keywordTypes','KeywordTypeController@getAll')->middleware('jwt.auth');
+
+Route::post('keyword/saveKeyword','KeywordController@saveKeyword')->middleware('jwt.auth');

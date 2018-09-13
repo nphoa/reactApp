@@ -4,7 +4,7 @@ import LoginComponent from './Components/Login.Component';
 import LayoutComponent from './Components/Layout/layout.Component';
 import DashboardComponent from './Components/Dashboard.Component';
 import KeywordsContainer from './Containers/Keywords.Container';
-import Keyword from './Components/English/Keyword.Component';
+import KeywordContainer from './Containers/Keyword.Container';
 import RegisterComponent from './Components/Register.Component';
 const routers = [
     {
@@ -32,9 +32,9 @@ const routers = [
                 component:KeywordsContainer
             },
             {
-                path:'/addKeyword',
+                path:'/addKeyword/:id?',
                 exact:true,
-                component:Keyword
+                component:KeywordContainer
             }
         ]
     }

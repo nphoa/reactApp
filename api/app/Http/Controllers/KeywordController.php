@@ -16,4 +16,10 @@ class KeywordController extends Controller
         $data = $this->keywordService->getAll();
         return  response()->json(['status' => 200, 'data' => $data]);
     }
+
+    public function saveKeyword(Request $res)
+    {
+        $keyword = json_decode($res->get('keyword'),true);
+        $data = $this->keywordService->saveKeyword($keyword);
+    }
 }

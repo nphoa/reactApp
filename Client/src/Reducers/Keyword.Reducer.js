@@ -18,12 +18,30 @@ var initialState  = {
             vietnames:'Tinh yeu'
         }
     ],
-    keywordEditing:{}
+    keywordEditing:{
+        id:0
+    },
+    keywordTypes:[]
 };
 
 var myReducer = (state = initialState,action) => {
 	switch (action.type) {
-		
+        case types.GET_KEYWORDS_SUCCESS:
+        console.log(123);
+            state.keywords = action.keywords;
+            return {...state};
+            break;
+        case types.GET_KEYWORD_TYPES_SUCCESS:
+            state.keywordTypes = action.keywordTypes;
+            return {...state};
+            break;
+        case types.GET_KEYWORD_BY_ID:
+            let item = state.keywords.find((item)=>{
+                return item.id ==action.id;
+            })
+            state.keywordEditing = item;
+            return {...state}
+            break;
 		default:
 			//console.log(api.getAllProduct());
 			return {...state};
