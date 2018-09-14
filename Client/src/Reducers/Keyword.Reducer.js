@@ -42,6 +42,11 @@ var myReducer = (state = initialState,action) => {
             state.keywordEditing = item;
             return {...state}
             break;
+        case types.FRESH_KEYWORD:
+            
+            state.keywordEditing = { id:0};
+            return {...state}
+            break;
 		default:
 			//console.log(api.getAllProduct());
 			return {...state};

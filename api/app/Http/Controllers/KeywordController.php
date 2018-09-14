@@ -21,5 +21,22 @@ class KeywordController extends Controller
     {
         $keyword = json_decode($res->get('keyword'),true);
         $data = $this->keywordService->saveKeyword($keyword);
+        if($data == true){
+            $response = ['status' => 200, 'data' => 1];
+        }else{
+            $response = ['status' => 500, 'data' => 0];
+        }
+        return response()->json($response);
+    }
+
+    public function deleteKeyword(Request $res){
+        $id = $res->get('id');
+        $data = $this->keywordService->deleteKeyword($id);
+        if($data==1){
+            $response = ['status' => 200, 'data' => 1];
+        }else{
+            $response = ['status' => 500, 'data' => 0];
+        }
+        return response()->json($response);
     }
 }

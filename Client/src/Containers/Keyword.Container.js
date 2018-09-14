@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch,props) => {
       },
       getKeywordById:(id) => {
         dispatch(actions.getKeywordById(id))
+      },
+      freshKeyword:()=>{
+        dispatch(actions.freshKeyword())
       }
     }
 }

@@ -23,3 +23,4 @@ Route::get('keyword/getAll','KeywordController@getAll')->middleware('jwt.auth');
 Route::get('keyword/keywordTypes','KeywordTypeController@getAll')->middleware('jwt.auth');
 
 Route::post('keyword/saveKeyword','KeywordController@saveKeyword')->middleware('jwt.auth');
+Route::get('keyword/deleteKeyword','KeywordController@deleteKeyword')->middleware('jwt.auth');

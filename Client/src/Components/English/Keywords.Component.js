@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import * as urls from './../../API/url';
+import callApiAxios from './../../API/callApi';
 class KeywordsComponent extends Component{
     constructor(props){
       super(props);
@@ -31,6 +32,16 @@ class KeywordsComponent extends Component{
       this.props.getKeywords();
       
     }
+    onDeleteHandle = (id,event) => {
+      event.preventDefault();
+      let token = 'Bearer '+sessionStorage.getItem('token');
+      let url = urls.url_get_deleteKeyword+`?id=${id}`;
+      callApiAxios(url,'GET','',token).then((res)=>{
+        if(res.data.status == 200){
+          this.props.getKeywords();
+      }
+      });
+    }
     showContentKeyword = (keywords) => {
         let result = null;
        if(keywords != null && keywords.length > 0){
@@ -42,7 +53,7 @@ class KeywordsComponent extends Component{
                     <td>{item.vietnamese}</td>
                     <td>
                         <Link to ={`/addKeyword/${item.id}`} href='' className='btn btn-warning'>Edit</Link>
-                        <a href='' className='btn btn-danger'>Delete</a>
+                        <a href='' onClick={(e) =>this.onDeleteHandle(item.id,e)} className='btn btn-danger'>Delete</a>
                     </td>
                   </tr>
                 )

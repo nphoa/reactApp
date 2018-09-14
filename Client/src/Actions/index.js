@@ -52,3 +52,10 @@ export const getKeywordById = (id) => {
         id:id
     }
 }
+
+export const freshKeyword = () => {
+    return {
+        type:actionTypes.FRESH_KEYWORD
+      
+    }
+}

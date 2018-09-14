@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 import {Field,reduxForm} from 'redux-form';
-
+import {Redirect}from 'react-router-dom';
 import {connect} from 'react-redux';
 import callApi from './../../API/callApi';
 import * as urls from './../../API/url';
@@ -12,7 +12,7 @@ class KeywordComponent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            otherState:'',
+            redirectUrl:false,
            
         }
     }
@@ -47,14 +47,18 @@ class KeywordComponent extends Component {
       }
       submitForm = () => {
           let values = this.props.valuesForm.values;
-          console.log(values);
           let token = 'Bearer '+sessionStorage.getItem('token');
           let fd = new FormData();
           fd.set('keyword',JSON.stringify(values));
           callApi(urls.url_post_saveKeyword,'POST',fd,token).then((res)=>{
-                console.log(res);
+                if(res.data.status == 200){
+                    this.setState({
+                        redirectUrl:true
+                    });
+                    this.props.freshKeyword();
+                }
           }).catch((error)=>{
-
+                alert('Error');
           })
             
       }
@@ -69,6 +73,11 @@ class KeywordComponent extends Component {
       }
     render() {
         const { pristine, reset, submitting,valid,handleSubmit } = this.props;
+        if(this.state.redirectUrl){
+            return(
+                <Redirect to='/keywords'/>
+            )
+        }
         return (
             <div className="animated fadeIn">
                 <Row>
