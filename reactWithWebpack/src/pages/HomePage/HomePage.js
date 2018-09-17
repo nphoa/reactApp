@@ -5,7 +5,7 @@ class HomePage extends Component {
         console.log('render');
         return (
             <div className="container">
-                <h1>Trang Chủ12312312</h1>
+                <h1>Trang CHu 22222 </h1>
             </div>
         );
     }
