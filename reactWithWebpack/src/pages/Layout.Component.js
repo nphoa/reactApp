@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
      import '../public/css/bar.css';
     
-  import '../public/css/bootstrap.css';
+  import 'bootstrap/dist/css/bootstrap.min.css';
  import '../public/css/style.css';
  import '../public/css/style4.css';
  import '../public/css/fontawesome-all.css';
-
+import '../public/js/script.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
 $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
+
+    $(".dropdown").hover(
+      function () {
+          $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+          $(this).toggleClass('open');
+      },
+      function () {
+          $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+          $(this).toggleClass('open');
+      }
+      
+  );
+
+  $(window).load(function () {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+  });
+
 });
 class LayoutComponent extends Component {
     render() {
+      console.log('hoa4');
         return (
             <div>
           
@@ -270,224 +290,19 @@ class LayoutComponent extends Component {
                   <div className="row">
                     {/* Stats */}
                     <div className="outer-w3-agile col-xl">
-                      <div className="stat-grid p-3 d-flex align-items-center justify-content-between bg-primary">
-                        <div className="s-l">
-                          <h5>Projects</h5>
-                          <p className="paragraph-agileits-w3layouts text-white">Lorem Ipsum</p>
-                        </div>
-                        <div className="s-r">
-                          <h6>340
-                            <i className="far fa-edit" />
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-success">
-                        <div className="s-l">
-                          <h5>Clients</h5>
-                          <p className="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                        </div>
-                        <div className="s-r">
-                          <h6>250
-                            <i className="far fa-smile" />
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
-                        <div className="s-l">
-                          <h5>Tasks</h5>
-                          <p className="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                        </div>
-                        <div className="s-r">
-                          <h6>232
-                            <i className="fas fa-tasks" />
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-warning">
-                        <div className="s-l">
-                          <h5>Employees</h5>
-                          <p className="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                        </div>
-                        <div className="s-r">
-                          <h6>190
-                            <i className="fas fa-users" />
-                          </h6>
-                        </div>
-                      </div>
+                     
+              
+                    
+                    
+                    
+                    
                     </div>
-                    {/*// Stats */}
-                    {/* Pie-chart */}
-                    <div className="outer-w3-agile col-xl ml-xl-3 mt-xl-0 mt-3">
-                      <h4 className="tittle-w3-agileits mb-4">Pie Chart</h4>
-                      <div id="chartdiv" />
-                    </div>
-                    {/*// Pie-chart */}
+                  
                   </div>
                 </div>
-                {/* Simple-chart */}
-                <div className="outer-w3-agile mt-3">
-                  <h4 className="tittle-w3-agileits mb-4">Graph</h4>
-                  <div id="Hybridgraph" className="simple-chart1">
-                  </div>
-                </div>
-                {/*// Simple-chart */}
-                {/*// Bar-Chart */}
-                <div className="outer-w3-agile mt-3">
-                  <h4 className="tittle-w3-agileits mb-4">Bar Chart</h4>
-                  <div id="chart-1" />
-                </div>
-                {/*// Bar-Chart */}
-                {/*// three-grids */}
-                <div className="container-fluid">
-                  <div className="row">
-                    {/* Calender */}
-                    <div className="outer-w3-agile col-xl mt-3">
-                      <h4 className="tittle-w3-agileits mb-4">Multi range Calender</h4>
-                      <div className="multi-select-calender" />
-                      <div className="box" />
-                    </div>
-                    {/*// Calender */}
-                    {/* Profile */}
-                    <div className="outer-w3-agile col-xl mt-3 mx-xl-3 p-xl-0 px-md-5">
-                      <div className="header">
-                        <div className="text">
-                          <img src="images/profile.jpg" className="img-fluid rounded-circle" alt="Responsive image" />
-                          <h2>Matthew Scott</h2>
-                          <a href="mailto:info@example.com">
-                            <p>@Lorem ipsum</p>
-                          </a>
-                        </div>
-                      </div>
-                      <div className="container-flud">
-                        <div className="followers row">
-                          <div className="f-left col">
-                            <a href="#">
-                              <i className="far fa-comments" />
-                            </a>
-                          </div>
-                          <div className="f-left col border-left border-right">
-                            <a href="#">
-                              <i className="fas fa-eye" />
-                            </a>
-                          </div>
-                          <div className="f-left col">
-                            <a href="#">
-                              <i className="far fa-heart" />
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <ul className="prof-widgt-content">
-                        <li className="menu">
-                          <ul>
-                            <li className="button">
-                              <a href="#">
-                                <i className="fas fa-envelope" /> Messages
-                                <span>13</span>
-                              </a>
-                            </li>
-                            <li className="dropdown">
-                              <ul className="icon-navigation">
-                                <li>
-                                  <a href="#">Inbox
-                                    <span className="float-right">[09]</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#">Outbox
-                                    <span className="float-right">[01]</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#">Sent messages
-                                    <span className="float-right">[03]</span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="menu">
-                          <ul>
-                            <li className="button">
-                              <a href="#">
-                                <i className="fas fa-user" /> Profile</a>
-                            </li>
-                            <li className="dropdown">
-                              <ul className="icon-navigation">
-                                <li>
-                                  <a href="#">Change your pic</a>
-                                </li>
-                                <li>
-                                  <a href="#">Change your username</a>
-                                </li>
-                                <li>
-                                  <a href="#">About us</a>
-                                </li>
-                                <li>
-                                  <a href="#">Contact me</a>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                    {/*// Profile */}
-                    {/* Browser stats */}
-                    <div className="outer-w3-agile col-xl mt-3">
-                      <h4 className="tittle-w3-agileits mb-4">Browser Stats</h4>
-                      <div className="stats-info stats-body">
-                        <ul className="list-unstyled">
-                          <li className="pb-3">GoogleChrome
-                            <span className="float-right">85%</span>
-                            <div className="progress progress-striped active progress-right">
-                              <div className="bar green" style={{width: '85%'}} />
-                            </div>
-                          </li>
-                          <li className="py-md-4 py-3">Firefox
-                            <span className="float-right">35%</span>
-                            <div className="progress progress-striped active progress-right">
-                              <div className="bar yellow" style={{width: '35%'}} />
-                            </div>
-                          </li>
-                          <li className="py-md-4 py-3">Internet Explorer
-                            <span className="float-right">78%</span>
-                            <div className="progress progress-striped active progress-right">
-                              <div className="bar red" style={{width: '78%'}} />
-                            </div>
-                          </li>
-                          <li className="py-md-4 py-3">Safari
-                            <span className="float-right">50%</span>
-                            <div className="progress progress-striped active progress-right">
-                              <div className="bar blue" style={{width: '50%'}} />
-                            </div>
-                          </li>
-                          <li className="py-md-4 py-3">Opera
-                            <span className="float-right">80%</span>
-                            <div className="progress progress-striped active progress-right">
-                              <div className="bar light-blue" style={{width: '80%'}} />
-                            </div>
-                          </li>
-                          <li className="last py-md-4 py-3">Others
-                            <span className="float-right">60%</span>
-                            <div className="progress progress-striped active progress-right">
-                              <div className="bar orange" style={{width: '60%'}} />
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    {/*// Browser stats */}
-                  </div>
-                </div>
-                {/*// Three-grids */}
-                {/* Countdown */}
-                <div className="outer-w3-agile mt-3 outer-w3-agile-bg">
-                  <h4 className="tittle-w3-agileits mb-4 text-white">Countdown Timer</h4>
-                  <div className="simply-countdown-custom" id="simply-countdown-custom" />
-                </div>
-                {/*// Countdown */}
+              
+        
+               
                 {/* Copyright */}
                 <div className="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center">
                   <p>© 2018 Modernize . All Rights Reserved | Design by
