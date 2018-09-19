@@ -1,10 +1,19 @@
 const path = require('path');
 
+const NODE_ENV = process.env.NODE_ENV || 'development',
+      IS_DEVELOPMENT = NODE_ENV === 'development',
+      IS_PRODUCTION = NODE_ENV === 'production';
+
+
 const dir = (src) => path.join(__dirname, src);
 
 const paths = {
-    bundle: dir('../bundle')
-}
+    bundle    : dir('../bundle'),
+    src       : dir('../src') ,
+    indexHtml : dir('../index.html'), 
+};
+
+
 
 const
     outputFiles = {
@@ -21,5 +30,8 @@ const
 module.exports = {
     paths,
     outputFiles,
-    entries
+    entries,
+    NODE_ENV,
+    IS_DEVELOPMENT,
+    IS_PRODUCTION
 };

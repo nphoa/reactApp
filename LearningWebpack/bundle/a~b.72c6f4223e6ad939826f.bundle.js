@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],[,function(a,e,s){"use strict";e.a=[{firstName:"Adam",age:28},{firstName:"Jane",age:24},{firstName:"Ben",age:31},{firstName:"Lucy",age:40}]}]]);
