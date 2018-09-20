@@ -326,9 +326,9 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/
   !*** ./src/public/css/fontawesome-all.css ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("throw new Error(\"Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\\nModuleParseError: Module parse failed: Unexpected character '\\u0000' (1:0)\\nYou may need an appropriate loader to handle this file type.\\n(Source code omitted for this binary file)\\n    at handleParseError (/home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/webpack/lib/NormalModule.js:432:19)\\n    at doBuild.err (/home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/webpack/lib/NormalModule.js:466:5)\\n    at runLoaders (/home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/webpack/lib/NormalModule.js:327:12)\\n    at /home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/loader-runner/lib/LoaderRunner.js:370:3\\n    at iterateNormalLoaders (/home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/loader-runner/lib/LoaderRunner.js:211:10)\\n    at Array.<anonymous> (/home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/loader-runner/lib/LoaderRunner.js:202:4)\\n    at Storage.finished (/home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:43:16)\\n    at provider (/home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:79:9)\\n    at /home/ACT-LAP-01/Desktop/GitReact/reactApp/reactWithWebpack/node_modules/graceful-fs/graceful-fs.js:78:16\\n    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:511:3)\");\n\n//# sourceURL=webpack:///./src/public/css/fontawesome-all.css?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/public/css/fontawesome-all.css?");
 
 /***/ }),
 

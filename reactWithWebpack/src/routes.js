@@ -1,35 +1,42 @@
 import React from 'react';
 import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import ProductListPage from './pages/ProductListPage/ProductListPage';
-import ProductActionPage from './pages/ProductActionPage/ProductActionPage';
+import LayoutPage from './pages/Layout.Page';
+import LoginPage from './pages/Login.Page';
 
-const routes = [
+
+const routers = [
     {
-        path: '/',
-        exact: true,
-        main: () => <HomePage />
+        path:'/login',
+        exact:true,
+        component:LoginPage
     },
     {
-        path: '/product-list',
-        exact: false,
-        main: () => <ProductListPage />
+        path:'/register',
+        exact:true,
+        //component:RegisterComponent
     },
     {
-        path: '/product/add',
-        exact: false,
-        main: ({history}) => <ProductActionPage history={history}/>
-    },
-    {
-        path: '/product/:id/edit',
-        exact: false,
-        main: ({match, history}) => <ProductActionPage match={match} history={history}/>
-    },
-    {
-        path: '',
-        exact: false,
-        main: () => <NotFoundPage />
+        path:'/',
+        component:LayoutPage,
+        routes:[
+            {
+                path:'/homepage',
+                exact:true,
+                component:HomePage
+            },
+            // {
+            //     path:'/keywords',
+            //     exact:true,
+            //     component:KeywordsContainer
+            // },
+            // {
+            //     path:'/addKeyword/:id?',
+            //     exact:true,
+            //     component:KeywordContainer
+            // }
+        ]
     }
-];
+]
 
-export default routes;
+export default routers

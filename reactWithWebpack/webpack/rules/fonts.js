@@ -1,5 +1,4 @@
-module.require = {
-    test: /\.(eot|svg|ttf|woff|woff2)$/,
-    exclude : /(node_modules)/,
-    use     : ['file-loader'],
+module.exports = {
+    test: /\.(woff|woff2|eot|ttf|otf|jpe?g|gif|png|svg|eot)$/,
+    use: 'file-loader',
 }

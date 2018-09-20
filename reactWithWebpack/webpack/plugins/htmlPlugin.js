@@ -3,5 +3,5 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'),
 
   console.log(manifest.paths.indexHtml);    
 module.exports = new HtmlWebpackPlugin({
-    //template:'.././index.html'
+    template:manifest.paths.indexHtml
 })

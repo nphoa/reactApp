@@ -1,43 +1,47 @@
 import React, { Component } from 'react';
+import routers from './../../routes';
+import { Switch, Route, BrowserRouter as Router, HashRouter } from 'react-router-dom';
 
-import Menu from './../Menu/Menu';
-import routes from './../../routes';
-import { Switch, Route, BrowserRouter as Router ,HashRouter} from 'react-router-dom';
-import LayoutComponent from './../../pages/Layout.Component';
+
+import '../../public/css/bar.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../public/css/style.css';
+import '../../public/css/style4.css';
+import '../../public/css/fontawesome-all.css';
+import '../../public/js/script';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+
 class App extends Component {
-    render() {
-      return(
-          <LayoutComponent/>
-      )
-    //     return (
-    //         <HashRouter>
-    //             <div>
-    //                 <Menu />
-    //                 <div className="container">
-    //                     <div className="row">
-    //                         {this.showContentMenus(routes)}
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </HashRouter>
-    //     );
-    // }
+    showContentRoute = (routes) => {
 
-    // showContentMenus = (routes) => {
-    //     var result = null;
-    //     if (routes.length > 0) {
-    //         result = routes.map((route, index) => {
-    //             return (
-    //                 <Route
-    //                     key={index}
-    //                     path={route.path}
-    //                     exact={route.exact}
-    //                     component={route.main}
-    //                 />
-    //             );
-    //         });
-    //     }
-    //    return <Switch>{result}</Switch>;
+        var result = null;
+        if (routes.length > 0) {
+            result = routes.map((route, index) => {
+                return (
+                    <Route
+                        key={index}
+                        path={route.path}
+                        exact={route.exact}
+                        render={props => (
+                            // pass the sub-routes down to keep nesting
+                            <route.component {...props} routes={route.routes} />
+                        )}
+                    />
+                );
+            });
+        }
+        return result;
+    }
+    render() {
+        return (
+            <HashRouter>
+                <div>
+                    {this.showContentRoute(routers)}
+                </div>
+
+            </HashRouter>
+        )
     }
 
 }

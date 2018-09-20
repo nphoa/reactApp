@@ -1,77 +1,62 @@
-import * as Types from './../constants/ActionTypes';
-import callApi from './../utils/apiCaller';
 
-export const actFetchProductsRequest = () => {
-    return dispatch => {
-        return callApi('products', 'GET', null).then(res => {
-            dispatch(actFetchProducts(res.data));
-        });
-    };
-}
+import * as actionTypes from '../constants/ActionTypes';
 
-export const actFetchProducts = (products) => {
+export const login = (login) =>{
     return {
-        type : Types.FETCH_PRODUCTS,
-        products
+        type:actionTypes.LOGIN,
+        login:login
     }
 }
 
-export const actDeleteProductRequest = (id) => {
-    return dispatch => {
-        return callApi(`products/${id}`, 'DELETE', null).then(res =>{
-            dispatch(actDeleteProduct(id));
-        })
-    }
-}
-
-export const actDeleteProduct = (id) => {
+export const login_success = (login) =>{
     return {
-        type : Types.DELETE_PRODUCT,
-        id
+        type:actionTypes.LOGIN_SUCCESS,
+        login:login
     }
 }
 
-export const actAddProductRequest = (product) => {
-    return dispatch => {
-        return callApi('products', 'POST', product).then(res => {
-            dispatch(actAddProduct(res.data));
-        });
+export const logout = () => {
+    return{
+        type:actionTypes.LOGOUT
     }
 }
 
-export const actAddProduct = (product) => {
+export const getKeywords = () => {
     return {
-        type : Types.ADD_PRODUCT,
-        product
+        type:actionTypes.GET_KEYWORDS
     }
 }
 
-export const actGetProductRequest = (id) => {
-    return dispatch => {
-        return callApi(`products/${id}`, 'GET', null).then(res => {
-            dispatch(actGetProduct(res.data));
-        });
-    }
-}
-
-export const actGetProduct = (product) => {
+export const getKeywords_success = (data) => {
     return {
-        type : Types.EDIT_PRODUCT,
-        product
+        type:actionTypes.GET_KEYWORDS_SUCCESS,
+        keywords:data
     }
 }
 
-export const actUpdateProductRequest = (product) => {
-    return dispatch => {
-        return callApi(`products/${product.id}`, 'PUT', product).then(res => {
-            dispatch(actUpdateProduct(res.data));
-        });
-    }
-}
-
-export const actUpdateProduct = (product) => {
+export const getKeywordTypes = () => {
     return {
-        type : Types.UPDATE_PRODUCT,
-        product
+        type:actionTypes.GET_KEYWORD_TYPES
+    }
+}
+
+export const getKeywordTypes_success = (data) => {
+    return {
+        type:actionTypes.GET_KEYWORD_TYPES_SUCCESS,
+        keywordTypes:data
+    }
+}
+
+export const getKeywordById = (id) => {
+    return {
+        type:actionTypes.GET_KEYWORD_BY_ID,
+        id:id
+    }
+}
+
+export const freshKeyword = () => {
+    return {
+        type:actionTypes.FRESH_KEYWORD
+      
     }
 }

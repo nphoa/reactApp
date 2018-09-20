@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-import products from './products';
-import itemEditing from './itemEditing';
+import authencationReducer from './authencation.Reducer';
+
 
 const appReducers = combineReducers({
-    products,
-    itemEditing
+    authencationReducer
 });
 
 export default appReducers;
