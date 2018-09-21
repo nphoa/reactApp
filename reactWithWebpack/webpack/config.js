@@ -5,6 +5,7 @@ const path = require('path'),
   plugins = require('./plugins/index');
 
 const entry = [
+  "@babel/polyfill",
   path.join(manifest.paths.src, 'index.js')
 ];
 
