@@ -20,6 +20,7 @@ class KeywordController extends Controller
     public function saveKeyword(Request $res)
     {
         $keyword = json_decode($res->get('keyword'),true);
+
         $data = $this->keywordService->saveKeyword($keyword);
         if($data == true){
             $response = ['status' => 200, 'data' => 1];
@@ -38,5 +39,10 @@ class KeywordController extends Controller
             $response = ['status' => 500, 'data' => 0];
         }
         return response()->json($response);
+    }
+
+    public function searchKeyword(Request $res){
+        $keyword = $res->get('keywordSearch');
+
     }
 }

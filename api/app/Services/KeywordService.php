@@ -54,4 +54,14 @@ class KeywordService {
         }
         return $deleteRows;
     }
+
+    public function searchKeyword($keyword){
+        $result = null;
+        try{
+            
+        }catch (\Exception $ex){
+
+        }
+        return $result;
+    }
 }
