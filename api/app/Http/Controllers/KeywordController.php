@@ -12,8 +12,8 @@ class KeywordController extends Controller
         $this->keywordService = $keywordService;
     }
 
-    public function getAll(){
-        $data = $this->keywordService->getAll();
+    public function getAll(Request $res){
+        $data = $this->keywordService->getAll($res->all());
         return  response()->json(['status' => 200, 'data' => $data]);
     }
 

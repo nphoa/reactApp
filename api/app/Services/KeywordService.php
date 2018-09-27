@@ -6,15 +6,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\KeywordType;
 class KeywordService {
-    public function getAll(){
-        $data = null;
+    public function getAll($dataSearch){
+        $querySearch = [];
         try{
-            $data =  DB::table('keywords')->leftJoin('keyword_types','keywords.idType','=','keyword_types.id')
-                ->select('keywords.*','keyword_types.type')->get();
+            $querySearch =  DB::table('keywords')->leftJoin('keyword_types','keywords.idType','=','keyword_types.id')
+                ->select('keywords.*','keyword_types.type');
+
+            if(isset($dataSearch['keyword'])){
+                $querySearch = $querySearch->where('keywords.keyword','like','%'.$dataSearch['keyword'].'%');
+            }
+            if(isset($dataSearch['type'])){
+                $querySearch = $querySearch->where('keyword_types.id',$dataSearch['type']);
+            }
+            if(isset($dataSearch['vietnamese'])){
+                $querySearch = $querySearch->where('keywords.vietnamese','like','%'.$dataSearch['vietnamese'].'%');
+            }
+            $querySearch = $querySearch->get();
         }catch (\Exception $ex){
-            $data = null;
+            $querySearch = null;
         }
-        return $data;
+        return $querySearch;
     }
 
     public function getAllKeywordType(){
@@ -58,7 +69,7 @@ class KeywordService {
     public function searchKeyword($keyword){
         $result = null;
         try{
-            
+
         }catch (\Exception $ex){
 
         }
