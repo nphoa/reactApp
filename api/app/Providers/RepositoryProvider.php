@@ -28,5 +28,10 @@ class RepositoryProvider extends ServiceProvider
             \App\Repositories\eloquent\SidebarRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\KeywordRepositoryInterface::class,
+            \App\Repositories\eloquent\KeywordRepository::class
+        );
+
     }
 }
