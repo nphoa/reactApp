@@ -15,8 +15,9 @@ class KeywordController extends Controller
         $this->keywordRepositoryInterface = $keywordRepositoryInterface;
     }
 
-    public function getAll(){
-        $data = $this->keywordRepositoryInterface->getAll();
+    public function getAll(Request $req){
+        dd($req->get('page'));
+        $data = $this->keywordRepositoryInterface->getAll(null);
         return  response()->json(['status' => 200, 'data' => $data]);
     }
 
@@ -57,7 +58,8 @@ class KeywordController extends Controller
     }
 
     public function searchKeyword(Request $res){
-        $keyword = $res->get('keywordSearch');
-
+        $resData = json_decode($res->get('dataSearch'),true);
+        $data = $this->keywordRepositoryInterface->getAll($resData);
+        return  response()->json(['status' => 200, 'data' => $data]);
     }
 }

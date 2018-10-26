@@ -6,24 +6,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class KeywordRepository implements KeywordRepositoryInterface{
-    public function getAll($dataSearch)
+    public function getAll($dataSearch,$page)
     {
+        $pageSize = 10;
         $querySearch = [];
 //        $data =  DB::table('keywords')
 //                    ->join('keyword_types','keywords.idType','=','keyword_types.id')
 //                    ->select('keywords.*','keyword_types.vietnamese as type')
 //                    ->get();
+        $totalItems = Keyword::all()->count();
+        dd($totalItems);
         $querySearch =  DB::table('keywords')
                             ->leftJoin('keyword_types','keywords.idType','=','keyword_types.id')
                             ->select('keywords.*','keyword_types.type as type');
 
-        if(isset($dataSearch['keyword'])){
+        if($dataSearch['keyword'] != ''){
             $querySearch = $querySearch->where('keywords.keyword','like','%'.$dataSearch['keyword'].'%');
         }
-        if(isset($dataSearch['type'])){
+        if($dataSearch['type'] != ''){
             $querySearch = $querySearch->where('keyword_types.id',$dataSearch['type']);
         }
-        if(isset($dataSearch['vietnamese'])){
+        if($dataSearch['vietnamese'] != ''){
             $querySearch = $querySearch->where('keywords.vietnamese','like','%'.$dataSearch['vietnamese'].'%');
         }
         $querySearch = $querySearch->get();

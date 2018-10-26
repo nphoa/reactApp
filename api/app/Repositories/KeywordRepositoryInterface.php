@@ -14,7 +14,7 @@ interface KeywordRepositoryInterface {
      * @param null
      * @return mixed
      */
-    public function getAll($dataSearch);
+    public function getAll($dataSearch,$page);
 
 
     /**
