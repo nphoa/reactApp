@@ -16,8 +16,7 @@ class KeywordController extends Controller
     }
 
     public function getAll(Request $req){
-        dd($req->get('page'));
-        $data = $this->keywordRepositoryInterface->getAll(null);
+        $data = $this->keywordRepositoryInterface->getAll(null,$req->get('page'));
         return  response()->json(['status' => 200, 'data' => $data]);
     }
 
