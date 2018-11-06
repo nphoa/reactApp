@@ -97,6 +97,7 @@ class KeywordRepository implements KeywordRepositoryInterface{
         }
 
         return [
+            'currentPage'=>$page,
             'pageSize'   => $pageSize,
             'totalPages' => $totalPages,
             'startIndex' => $startIndex,
