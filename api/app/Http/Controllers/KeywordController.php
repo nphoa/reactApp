@@ -16,7 +16,14 @@ class KeywordController extends Controller
     }
 
     public function getAll(Request $req){
-        $data = $this->keywordRepositoryInterface->getAll(null,$req->get('page'));
+        $dataSearch = null;
+        $page = 1;
+        if($req->isMethod('post')){
+            $dataSearch = json_decode($req->get('dataSearch'),true);
+        }else{
+            $page = $req->get('page');
+        }
+        $data = $this->keywordRepositoryInterface->getAll($dataSearch,$page);
         return  response()->json(['status' => 200, 'data' => $data]);
     }
 

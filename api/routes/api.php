@@ -20,6 +20,8 @@ Route::post('authencation/register','AuthencationController@register');
 Route::post('authencation/login','AuthencationController@login');
 
 Route::get('keyword/getAll','KeywordController@getAll')->middleware('jwt.auth');
+Route::post('keyword/searchKeyword','KeywordController@getAll')->middleware('jwt.auth');
+
 Route::get('keyword/keywordTypes','KeywordTypeController@getAll')->middleware('jwt.auth');
 
 Route::post('keyword/saveKeyword','KeywordController@saveKeyword')->middleware('jwt.auth');
@@ -29,4 +31,4 @@ Route::get('keyword/deleteKeyword','KeywordController@deleteKeyword')->middlewar
 Route::post('sidebar/saveSidebar','SidebarController@save')->middleware('jwt.auth');
 Route::get('sidebar/getAll','SidebarController@getAll')->middleware('jwt.auth');
 
-Route::post('keyword/searchKeyword','KeywordController@searchKeyword')->middleware('jwt.auth');
+//Route::post('keyword/searchKeyword','KeywordController@searchKeyword')->middleware('jwt.auth');
